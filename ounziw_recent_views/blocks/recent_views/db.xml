@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema version="0.3">
+    <table name="btRecentViews">
+        <field name="bID" type="I">
+            <unsigned/>
+            <key/>
+        </field>
+        <field name="num_of_views" type="I" />
+    </table>
+</schema>
