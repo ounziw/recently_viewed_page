@@ -3,6 +3,8 @@ namespace Concrete\Package\OunziwRecentViews\Block\RecentViews;
 
 use \Concrete\Core\Block\BlockController;
 use Core;
+use View;
+
 class Controller extends BlockController {
 
     protected $btTable = 'btRecentViews';
@@ -17,7 +19,7 @@ class Controller extends BlockController {
 
     public function getBlockTypeDescription()
     {
-        return t("Displays a vistor's recent views history. Note: Do not put two or more blocks on the same page.");
+        return t("Displays a vistor's recent views history. In order to display thumbnails, use a custom template.");
     }
 
     public function getBlockTypeName()
@@ -27,10 +29,16 @@ class Controller extends BlockController {
 
     public function view()
     {
-
         $this->set('num_of_views', $this->num_of_views);
-
     }
+
+
+    public function on_start() {
+        // custom template "withimage" needs underscore.js
+        $v = View::getInstance();
+        $v->requireAsset('javascript', 'underscore');
+    }
+
 
     public function validate($args)
     {
